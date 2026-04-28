@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinay.M - Software Engineer Trainee Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .hero-photo {
+            flex: 0 0 auto;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid white;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background: white;
+            margin-top: 3rem;
+        }
+
+        .hero-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+        }
+
+        .hero .tagline {
+            font-size: 1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 60px 20px;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #667eea;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* Skills Section */
+        .skills {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .skills-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 100%;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-category h3 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            color: #333;
+            padding: 0.5rem 0.8rem;
+            border-radius: 0px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: transform 0.2s;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.05);
+        }
+
+        .skill-logo {
+            font-size: 2rem;
+        }
+
+        /* Project Section */
+        .projects {
+            background: white;
+        }
+
+        .project-card {
+            background: #f8f9fa;
+            border-left: 5px solid #667eea;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .project-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .project-card p {
+            color: #555;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .features-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #555;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Goals Section */
+        .goals {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .goals-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .goal-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #667eea;
+        }
+
+        .goal-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .goal-card p {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem 20px;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: opacity 0.3s;
+        }
+
+        .social-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-photo {
+                width: 150px;
+                height: 150px;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+
+            .goals-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Utility Classes */
+        .highlight {
+            color: #764ba2;
+            font-weight: bold;
+        }
+
+        .mt-3 {
+            margin-top: 3rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        /* Project Card with Images */
+        .project-card-with-images {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .project-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .project-content p {
+            font-size: 0.95rem;
+        }
+
+        .project-content h4 {
+            font-size: 1.05rem;
+        }
+
+        .project-content .features-list li {
+            font-size: 0.9rem;
+        }
+
+        .project-content .tech-tag {
+            font-size: 0.8rem;
+        }
+
+        .project-images {
+            flex: 0 0 auto;
+            position: relative;
+            width: 400px;
+            height: 400px;
+            border-radius: 10px;
+            overflow: visible;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            margin-top: 80px;
+        }
+
+        .project-images img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .project-images .overlay-image {
+            position: absolute;
+            bottom: -80px;
+            left: -30px;
+            width: 250px;
+            height: 250px;
+            border-radius: 8px;
+            border: 3px solid white;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .project-card-with-images {
+                flex-direction: column;
+            }
+
+            .project-images {
+                width: 100%;
+                height: auto;
+                min-height: 300px;
+                overflow: visible;
+                margin-top: 40px;
+            }
+
+            .project-images .overlay-image {
+                width: 160px;
+                height: 160px;
+                bottom: -60px;
+                left: -15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Portfolio</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#goals">Goals</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>HI ! I am Vinay.M</h1>
+                    <p class="subtitle">Software Engineer Trainee</p>
+                    <p class="tagline">Passionate about building robust backend solutions and creating meaningful digital experiences</p>
+                </div>
+                <div class="hero-photo">
+                    <img src="assets/profile.jpg" alt="Vinay.M Profile Photo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>
+                    I'm a <span class="highlight">Software Engineer Trainee</span> with a passion for developing innovative solutions and continuous learning. My journey in tech is driven by a desire to grow professionally and contribute to impactful projects in a collaborative environment.
+                </p>
+                <p>
+                    I specialize in <span class="highlight">full-stack development</span> with hands-on experience in HTML, CSS, JavaScript, Python, and SQL. Beyond technical expertise, I believe in cultivating essential soft skills like adaptability, conflict management, and a growth mindset to thrive in a dynamic workplace.
+                </p>
+                <p>
+                    My ultimate goal is to become a <span class="highlight">skilled backend developer</span> and work with a reputed organization, where I can leverage my skills to solve real-world problems and drive innovation.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2>My Skills</h2>
+            
+            <div class="skills-container">
+                <!-- Technical Skills -->
+                <div class="skill-category">
+                    <h3>💻 Technical Skills</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag"><span class="skill-logo">🏷️</span> HTML</span>
+                        <span class="skill-tag"><span class="skill-logo">🎨</span> CSS</span>
+                        <span class="skill-tag"><span class="skill-logo">⚡</span> JavaScript</span>
+                        <span class="skill-tag"><span class="skill-logo">🐍</span> Python</span>
+                        <span class="skill-tag"><span class="skill-logo">🗄️</span> SQL</span>
+                        <span class="skill-tag"><span class="skill-logo">🔗</span> Full-Stack</span>
+                    </div>
+                </div>
+
+                <!-- Soft Skills -->
+                <div class="skill-category">
+                    <h3>🌟 Soft Skills</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag"><span class="skill-logo">🔄</span> Adaptability</span>
+                        <span class="skill-tag"><span class="skill-logo">🤝</span> Conflict Management</span>
+                        <span class="skill-tag"><span class="skill-logo">🧠</span> Growth Mindset</span>
+                        <span class="skill-tag"><span class="skill-logo">👥</span> Teamwork</span>
+                        <span class="skill-tag"><span class="skill-logo">💬</span> Communication</span>
+                        <span class="skill-tag"><span class="skill-logo">🎯</span> Problem Solving</span>
+                    </div>
+                </div>
+
+                <!-- Professional Strengths -->
+                <div class="skill-category">
+                    <h3>🚀 Professional Strengths</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag"><span class="skill-logo">⚡</span> Quick Learner</span>
+                        <span class="skill-tag"><span class="skill-logo">🤲</span> Collaborative</span>
+                        <span class="skill-tag"><span class="skill-logo">🔍</span> Detail-Oriented</span>
+                        <span class="skill-tag"><span class="skill-logo">⚙️</span> Backend Focus</span>
+                        <span class="skill-tag"><span class="skill-logo">❤️</span> Passionate Learner</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2>My Projects</h2>
+            <p class="section-subtitle">Diverse Development Experience</p>
+
+            <!-- Project 1: Garden E-Marketing Platform -->
+            <div class="project-card">
+                <div class="project-card-with-images">
+                    <div class="project-content">
+                        <h3>🌱 Garden E-Marketing Platform</h3>
+                        
+                        <p>
+                            A comprehensive <span class="highlight">full-stack web application</span> designed to revolutionize the gardening industry by providing an integrated platform for plant sales, gardening services, and expert guidance.
+                        </p>
+
+                        <h4 style="color: #667eea; margin-top: 1.5rem; margin-bottom: 0.8rem;">Platform Features:</h4>
+                        <ul class="features-list">
+                            <li>Browse and purchase plants, seeds, and gardening products</li>
+                            <li>Access professional gardening services including maintenance and guidance</li>
+                            <li>Seasonal support and plant care consultation</li>
+                            <li>Combo offers and promotional deals for enhanced value</li>
+                            <li>User reviews and ratings system for social proof</li>
+                            <li>Intuitive user interfaces with responsive design</li>
+                            <li>Robust backend infrastructure with database integration</li>
+                        </ul>
+
+                        <h4 style="color: #667eea; margin-top: 1.5rem; margin-bottom: 0.8rem;">Technologies Used:</h4>
+                        <div class="tech-stack">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">Database Integration</span>
+                        </div>
+
+                        <h4 style="color: #667eea; margin-top: 1.5rem; margin-bottom: 0.8rem;">Key Achievements:</h4>
+                        <ul class="features-list">
+                            <li>Developed a user-friendly interface for seamless shopping experience</li>
+                            <li>Implemented comprehensive backend functionality</li>
+                            <li>Integrated database systems for efficient data management</li>
+                            <li>Created promotional features to increase user engagement</li>
+                            <li>Designed review system to build community trust</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="project-images">
+                        <img src="assets/garden_code.png" alt="Garden Platform Code">
+                        <img src="assets/garden_image.png" alt="Garden Platform Screenshot" class="overlay-image">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: Hygiene Restaurant & PG Finder -->
+            <div class="project-card">
+                <h3>🏠 Hygiene Restaurant & PG Finder</h3>
+                
+                <p>
+                    A <span class="highlight">frontend web application</span> designed to help users discover clean and hygienic accommodation options and restaurants. The platform provides verified information about hygiene standards and quality of service.
+                </p>
+
+                <h4 style="color: #667eea; margin-top: 1.5rem; margin-bottom: 0.8rem;">Key Features:</h4>
+                <ul class="features-list">
+                    <li>Search and filter restaurants by hygiene ratings and cleanliness standards</li>
+                    <li>Find verified PG (Paying Guest) accommodations with cleanliness certifications</li>
+                    <li>View detailed information about facilities and hygiene practices</li>
+                    <li>User reviews and ratings based on cleanliness and sanitation</li>
+                    <li>Interactive location-based search functionality</li>
+                    <li>Responsive and user-friendly interface</li>
+                </ul>
+
+                <h4 style="color: #667eea; margin-top: 1.5rem; margin-bottom: 0.8rem;">Technologies Used:</h4>
+                <div class="tech-stack">
+                    <span class="tech-tag">HTML5</span>
+                    <span class="tech-tag">CSS3</span>
+                    <span class="tech-tag">JavaScript</span>
+                </div>
+
+                <h4 style="color: #667eea; margin-top: 1.5rem; margin-bottom: 0.8rem;">Impact:</h4>
+                <ul class="features-list">
+                    <li>Created a practical solution for health-conscious users</li>
+                    <li>Built intuitive search and filter mechanisms</li>
+                    <li>Developed responsive UI for seamless user experience</li>
+                    <li>Enhanced frontend skills in HTML, CSS, and JavaScript</li>
+                </ul>
+            </div>
+
+            <!-- Project 3: Chemical Detector (AI Teachable Machine) -->
+            <div class="project-card">
+                <h3>🔬 Chemical Detector - AI Teachable Machine</h3>
+                
+                <p>
+                    An <span class="highlight">AI-powered web application</span> built using Weebly website builder integrated with Google's Teachable Machine. This project demonstrates the ability to leverage predefined AI models and no-code platforms to create practical solutions for detecting chemical residues on fruits.
+                </p>
+
+                <h4 style="color: #667eea; margin-top: 1.5rem; margin-bottom: 0.8rem;">Project Overview:</h4>
+                <ul class="features-list">
+                    <li>Built entirely using Weebly's drag-and-drop website builder (no coding required)</li>
+                    <li>Integrated predefined AI models from Google Teachable Machine</li>
+                    <li>Utilized pre-trained models for chemical detection on fruits</li>
+                    <li>Image upload and analysis functionality for chemical presence detection</li>
+                    <li>Clean, user-friendly interface for quick analysis and results</li>
+                    <li>Deployed on Weebly hosting platform</li>
+                </ul>
+
+                <h4 style="color: #667eea; margin-top: 1.5rem; margin-bottom: 0.8rem;">Technologies & Tools Used:</h4>
+                <div class="tech-stack">
+                    <span class="tech-tag">Weebly (Website Builder)</span>
+                    <span class="tech-tag">Google Teachable Machine</span>
+                    <span class="tech-tag">Predefined AI Models</span>
+                    <span class="tech-tag">Computer Vision</span>
+                    <span class="tech-tag">No-Code Platform</span>
+                </div>
+
+                <h4 style="color: #667eea; margin-top: 1.5rem; margin-bottom: 0.8rem;">Key Achievements:</h4>
+                <ul class="features-list">
+                    <li>Successfully integrated AI capabilities without writing code using no-code platforms</li>
+                    <li>Leveraged predefined Teachable Machine models for practical application</li>
+                    <li>Created a functional chemical detection tool for food safety purposes</li>
+                    <li>Demonstrated understanding of how to combine website builders with AI tools</li>
+                    <li>Showcased ability to work with emerging no-code and low-code technologies</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Goals Section -->
+    <section class="goals" id="goals">
+        <div class="container">
+            <h2>My Goals</h2>
+            <p class="section-subtitle">Vision for Growth and Success</p>
+
+            <div class="goals-container">
+                <!-- Short-term Goals -->
+                <div class="goal-card">
+                    <h3>📈 Short-Term Goals</h3>
+                    <p>
+                        <strong>English Fluency:</strong> Improve communication and presentation skills to collaborate effectively in international teams.
+                    </p>
+                    <p style="margin-top: 1rem;">
+                        <strong>Technical Strengthening:</strong> Deepen knowledge in web development, backend systems, and database management to build production-ready applications.
+                    </p>
+                </div>
+
+                <!-- Long-term Goals -->
+                <div class="goal-card">
+                    <h3>🎯 Long-Term Goals</h3>
+                    <p>
+                        <strong>Become a Skilled Backend Developer:</strong> Master advanced backend technologies and architectural patterns to design scalable systems.
+                    </p>
+                    <p style="margin-top: 1rem;">
+                        <strong>Work in Reputed Organization:</strong> Secure a position in a leading MNC where I can contribute to innovative projects and grow as a professional.
+                    </p>
+                </div>
+
+                <!-- Career Vision -->
+                <div class="goal-card">
+                    <h3>💡 Career Vision</h3>
+                    <p>
+                        I aspire to become a <span class="highlight">full-stack specialist with backend expertise</span>, capable of designing robust, scalable solutions for complex business problems. I'm committed to continuous learning and contributing meaningfully to team success.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Vinay.M | Software Engineer Trainee</p>
+            <p>Passionate about technology, innovation, and continuous growth</p>
+            <div class="social-links">
+                <a href="mailto:madurivinay123@gmail.com">📧 Email</a>
+                <a href="https://www.linkedin.com/in/vinay-maduri" target="_blank">💼 LinkedIn</a>
+                <a href="https://github.com" target="_blank">🐙 GitHub</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
