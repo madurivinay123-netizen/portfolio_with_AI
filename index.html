@@ -64,7 +64,20 @@
       text-decoration: none;
     }
     nav .logo span { color: var(--accent); }
-    nav ul { list-style: none; display: flex; gap: 2.4rem; }
+    nav .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--muted);
+      transition: color .25s;
+    }
+    nav .menu-toggle:hover { color: var(--ink); }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.4rem;
+    }
+    nav ul li { display: flex; }
     nav a {
       font-size: .88rem;
       font-weight: 500;
@@ -91,11 +104,10 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: center;
-      padding: 8rem 4rem 5rem;
+      padding: 6rem 4rem;
       gap: 4rem;
       position: relative;
       overflow: hidden;
-      margin-left: 110px;
     }
     .hero::before {
       content: '';
@@ -138,6 +150,7 @@
       margin-bottom: 2.5rem;
       line-height: 1.8;
     }
+    .hero-info { padding-left: 8rem; }
     .hero-cta {
       display: flex; gap: 1rem; flex-wrap: wrap;
     }
@@ -571,6 +584,7 @@
       .hero { grid-template-columns: 1fr; padding: 7rem 2rem 4rem; text-align: center; }
       .hero-visual { justify-content: center; }
       .hero-desc { margin: 0 auto 2.5rem; }
+      .hero-info { margin-left: 0; padding-left: 0; }
       .hero-cta { justify-content: center; }
       .about-grid { grid-template-columns: 1fr; gap: 3rem; }
       .skills-grid { grid-template-columns: 1fr 1fr; }
@@ -581,7 +595,25 @@
       .project-img-stack { height: 220px; margin-top: 0; }
     }
     @media (max-width: 640px) {
-      nav ul { gap: 1.2rem; font-size: .78rem; }
+      nav { padding: 1rem 2rem; position: relative; }
+      nav .menu-toggle { display: block; }
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(247,244,239,.95);
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 2rem;
+        box-shadow: 0 4px 16px rgba(0,0,0,.1);
+      }
+      nav ul.active { display: flex; }
+      nav ul li { margin-bottom: 1rem; }
+      nav ul li:last-child { margin-bottom: 0; }
       .skills-grid, .certs-grid, .goals-grid { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr 1fr; }
       .achieve-card { flex-direction: column; gap: 1.2rem; }
@@ -598,6 +630,7 @@
 <!-- Navigation -->
 <nav>
   <a href="#" class="logo">Vinay<span>.M</span></a>
+  <div class="menu-toggle" id="menu-toggle">☰</div>
   <ul>
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
@@ -610,7 +643,7 @@
 
 <!-- Hero -->
 <section class="hero">
-  <div>
+  <div class="hero-info">
     <div class="hero-eyebrow">Available for opportunities</div>
     <h1>Hi, I'm<br><em>Vinay</em></h1>
     <p class="hero-desc">Software Engineer Trainee passionate about building robust backend solutions and creating meaningful digital experiences.</p>
@@ -622,7 +655,7 @@
   <div class="hero-visual">
     <div class="hero-photo-wrap">
       <div class="hero-photo-bg"></div>
-      <img src="assets/profile.jpg" alt="Vinay.M" />
+      <img src="assets/profile.png" alt="Vinay.M" />
       <div class="hero-badge">Software Engineer Trainee</div>
       <div class="hero-stats">
         <strong>3+</strong>
@@ -641,7 +674,7 @@
   <div class="about-grid">
     <div class="about-text fade-up">
       <div class="section-label">About Me</div>
-      <h2 class="section-title">Engineer by trade,<br><em>builder</em> by passion</h2>
+      <h2 class="section-title">Future Backend Developer,<br><em>builder</em> by passion</h2>
       <p>I'm a <strong>Software Engineer Trainee</strong> driven by a desire to grow professionally and contribute to impactful projects in a collaborative environment.</p>
       <p>I specialise in <strong>full-stack development</strong> with hands-on experience in HTML, CSS, JavaScript, Python, and SQL — with a strong focus on backend systems and database management.</p>
       <p>My ultimate goal is to become a <strong>skilled backend developer</strong> working with a reputed organisation, where I can leverage my skills to solve real-world problems and drive innovation.</p>
@@ -886,11 +919,6 @@
         <h3>Email</h3>
         <p>madurivinay123@gmail.com</p>
       </a>
-      <a href="tel:+919876543210" class="contact-card fade-up">
-        <div class="c-icon">📱</div>
-        <h3>Mobile</h3>
-        <p>+91 98765 43210</p>
-      </a>
       <a href="https://www.linkedin.com/in/vinay-maduri" target="_blank" class="contact-card fade-up">
         <div class="c-icon">💼</div>
         <h3>LinkedIn</h3>
@@ -922,6 +950,20 @@
     el.addEventListener('mouseleave', () => cursor.classList.remove('grow'));
   });
 
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menu-toggle');
+  const navMenu = document.querySelector('nav ul');
+  menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+  });
+
+  // Close menu when clicking a link
+  navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('active');
+    });
+  });
+
   // Scroll reveal
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
@@ -931,7 +973,10 @@
   // Nav compact on scroll
   const nav = document.querySelector('nav');
   window.addEventListener('scroll', () => {
-    nav.style.padding = window.scrollY > 60 ? '.75rem 4rem' : '1.2rem 4rem';
+    const isMobile = window.innerWidth <= 640;
+    const defaultPadding = isMobile ? '1rem 2rem' : '1.2rem 4rem';
+    const compactPadding = isMobile ? '.75rem 2rem' : '.75rem 4rem';
+    nav.style.padding = window.scrollY > 60 ? compactPadding : defaultPadding;
   });
 </script>
 </body>
